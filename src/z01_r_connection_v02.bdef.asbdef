@@ -1,0 +1,56 @@
+managed implementation in class ZBP_01_Connection_v02 unique;
+strict ( 2 );
+with draft;
+define behavior for Z01_R_CONNECTION_V02 alias Connection_v02
+persistent table z01aconn_v02
+draft table Z01DCONN_v02
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+
+{
+  field ( readonly )
+   UUID,
+   LocalCreatedAt,
+   LocalCreatedBy,
+   LastChangedAt,
+   LocalLastChangedAt,
+   LocalLastChangedBy;
+
+  field ( numbering : managed )
+   UUID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for Z01ACONN_V02
+  {
+    UUID = uuid;
+    CarrierID = carrier_id;
+    ConnectionID = connection_id;
+    AirportFromID = airport_from_id;
+    CityFrom = city_from;
+    CountryFrom = country_from;
+    AirportToID = airport_to_id;
+    CityTo = city_to;
+    CountryTo = country_to;
+    LocalCreatedBy = local_created_by;
+    LocalCreatedAt = local_created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+    LastChangedAt = last_changed_at;
+  }
+  validation CheckSemanticKey on save { create; update; }
+  validation CheckCarrierID on save { create; field CarrierID; }
+  validation CheckOriginDestination on save { create; field AirportFromID, AirportToID; }
+
+  determination GetCities on save { field airportFromID, AirportToID; }
+}
