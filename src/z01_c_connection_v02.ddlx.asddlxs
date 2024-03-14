@@ -16,6 +16,7 @@ annotate view Z01_C_CONNECTION_V02 with
   @UI.hidden: true
   UUID;
   
+
   @UI.lineItem: [ {
     position: 10 , 
     importance: #MEDIUM
@@ -23,6 +24,8 @@ annotate view Z01_C_CONNECTION_V02 with
   @UI.identification: [ {
     position: 10 
   } ]
+  @Consumption.valueHelpDefinition:
+    [ {  entity: { name: 'Z01_I_CARRIERVH_V02', element: 'CarrierID' } } ]
   CarrierID;
   
   @UI.lineItem: [ {
@@ -48,7 +51,7 @@ annotate view Z01_C_CONNECTION_V02 with
     importance: #MEDIUM
   } ]
   @UI.identification: [ {
-    position: 40 
+    position: 50
   } ]
   CityFrom;
   
@@ -57,7 +60,7 @@ annotate view Z01_C_CONNECTION_V02 with
     importance: #MEDIUM
   } ]
   @UI.identification: [ {
-    position: 50 
+    position: 70 
   } ]
   CountryFrom;
   
@@ -66,7 +69,7 @@ annotate view Z01_C_CONNECTION_V02 with
     importance: #MEDIUM
   } ]
   @UI.identification: [ {
-    position: 60 
+    position: 40 
   } ]
   AirportToID;
   
@@ -75,7 +78,7 @@ annotate view Z01_C_CONNECTION_V02 with
     importance: #MEDIUM
   } ]
   @UI.identification: [ {
-    position: 70 
+    position: 60 
   } ]
   CityTo;
   

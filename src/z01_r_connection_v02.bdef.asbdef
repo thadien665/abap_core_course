@@ -15,7 +15,11 @@ authorization master( global )
    LocalCreatedBy,
    LastChangedAt,
    LocalLastChangedAt,
-   LocalLastChangedBy;
+   LocalLastChangedBy,
+   CityFrom,
+   CountryFrom,
+   CityTo,
+   CountryTo;
 
   field ( numbering : managed )
    UUID;
